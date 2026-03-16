@@ -15,7 +15,7 @@ class Cliente():
 
     # método especial para imprimir los valores:
     def __str__(self):
-        return f"RUT: {self.rut} | Nombre: {self.nombre} | Teléfono: {self.telefono} | Beneficio: {self.beneficio()}"
+        return f"RUT: {self._rut} | Nombre: {self._nombre} | Teléfono: {self._telefono} | Beneficio: {self.beneficio()}"
 
 
 

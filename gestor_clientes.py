@@ -20,7 +20,7 @@ clientes=[]   # lista que va a contener todos los objetos creados.
 def pedir_datos_cliente():                
 
     while True:                             # falta añadirle la opción para que cancele la emtrada de datos si no quiere continuar
-        rut = input ("Introduzca el rut")
+        rut = input ("Introduzca el rut:  ")
         
         try:
             rut_validado = validar_rut(rut)
@@ -28,10 +28,10 @@ def pedir_datos_cliente():
         except ValueError as e:
             print(e)
     
-    nombre = input ("Introduzca el nombre")
+    nombre = input ("Introduzca el nombre:  ")
 
     while True:    
-        email = input ("Introduzca el email")
+        email = input ("Introduzca el email:  ")
         try:
             email_validado= validar_email(email)
             break
@@ -39,14 +39,14 @@ def pedir_datos_cliente():
             print(e)
 
     while True:    
-        telefono = input ("Introduzca el número de teléfono")
+        telefono = input ("Introduzca el número de teléfono:  ")
         try:
             telefono_validado= validar_telefono(telefono)
             break
         except ValueError as e:
             print(e)
 
-    direccion= input ("Introduzca la dirección")
+    direccion= input ("Introduzca la dirección:  ")
 
 
     return  rut_validado, nombre, email_validado, telefono_validado, direccion  
@@ -111,7 +111,7 @@ def buscar_cliente():    # no se valida el rut porque no interesa de momento, lo
     
     for cliente in clientes:
 
-        if cliente.guet_rut() == rut_a_buscar:    
+        if cliente.get_rut() == rut_a_buscar:    
             return cliente
     
     return None   # devuelve None si no encuentra el rut  
@@ -169,15 +169,35 @@ def mostrar_clientes():                # esta se pudiera dividir en 3 funciones 
             cliente_corporativo.append(cliente)
     
     print("Clientes Regulares:  ")
-    for cliente in cliente_regular:
-        print(cliente)
+    if cliente_regular:
+        for cliente in cliente_regular:
+            print(cliente)
+    else:
+        print("no existen clientes de esta categoría")
 
     print("Clientes Premium:  ")
-    for cliente in cliente_premium:
-        print(cliente)
+    if cliente_premium:
+        for cliente in cliente_premium:
+            print(cliente)
+    else:
+        print("no existen clientes de esta categoría")
+
 
     print("Clientes Corporativos:  ")
-    for cliente in cliente_corporativo:
-        print(cliente)
+    if cliente_corporativo:
+        for cliente in cliente_corporativo:
+            print(cliente)
+    else:
+        print("no existen clientes de esta categoría")
 
-    
+
+#-----------------------------------------------------------------
+#   MOSTRAR UN SOLO CLIENTE POR EL RUT
+#-----------------------------------------------------------------
+
+def mostrar_cliente():  # esta muestra un solo cliente
+    cliente = buscar_cliente()
+    if cliente:
+        print(cliente)
+    else:
+        print(" El cliente no existe")
