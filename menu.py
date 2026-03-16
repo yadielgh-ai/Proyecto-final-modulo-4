@@ -11,7 +11,7 @@ def menu():
         print("""
         Escoja alguna de las siguientes opciones: 
         1: Crear Cliente
-        2: Editar Cliente
+        2: Editar Cliente    
         3: Eliminar Cliente
         4: Mostrar todos los clientes
         5: Buscar cliente
